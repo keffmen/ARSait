@@ -7,33 +7,10 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <title>AR Sample</title>
-    <style>
-      body {
-        margin: 0;
-      }
-      #overlay {
-        position: absolute;
-        z-index: 100;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 2em;
-        font-weight: bold;
-        text-align: center;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body style="margin: 0;">
     <a-scene embedded arjs>
-		<a-marker preset="hiro">
+		<a-marker url="1167d-big.jpg">
 			<a-entity
 				position="0 0 0"
 				scale="1 1 1"
@@ -42,7 +19,5 @@
 		</a-marker>
 		<a-entity camera></a-entity>
 	</a-scene>
-
-
   </body>
 </html>
