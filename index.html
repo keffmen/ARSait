@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>AR in Web</title>
-</head>
-<body>
-	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-	<a-scene embedded arjs>
-		<a-marker preset="hiro">
-			<a-entity
-				position="0 0 0"
-				scale="0.2 0.2 0.2"
-				gltf-model="obj/scene.gltf"
-			></a-entity>
-		</a-marker>
-		<a-entity camera></a-entity>
-	</a-scene>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AR Website with AR.JS</title>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-camera></a-camera>
+      <a-marker preset="custom" type="pattern" url="your-marker.patt">
+        <a-video src="your-video.mp4" width="16" height="9" rotation="-90 0 0"></a-video>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+      const marker = document.querySelector("a-marker");
+      marker.addEventListener("markerFound", () => {
+        const video = marker.querySelector("a-video");
+        video.play();
+      });
+      marker.addEventListener("markerLost", () => {
+        const video = marker.querySelector("a-video");
+        video.pause();
+      });
+    </script>
+  </body>
 </html>
