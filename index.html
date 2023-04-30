@@ -7,15 +7,28 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent('play-on-marker', {
+        init: function () {
+          this.el.sceneEl.addEventListener('markerFound', () => {
+            this.el.components.material.material.map.image.play();
+          });
+          this.el.sceneEl.addEventListener('markerLost', () => {
+            this.el.components.material.material.map.image.pause();
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <a-scene embedded arjs="sourceType: webcam;">
       <a-marker id="marker" preset="hiro">
-        <a-video src="Test.mp4" width="2" height="1" position="0 0 0" look-at="#marker" rotation="-90 0 0" type="video/mp4" sound="src: #video-sound; autoplay: false; loop: true;"></a-video>
+        <a-video play-on-marker src="Test.mp4" width="2" height="1" position="0 0 0" look-at="#marker" rotation="-90 0 0" preload="none"></a-video>
       </a-marker>
       <a-entity camera look-controls-enabled></a-entity>
     </a-scene>
   </body>
 </html>
+
 
 
