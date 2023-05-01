@@ -15,6 +15,15 @@
         }
       });
 
+      AFRAME.registerComponent('arjs', {
+          init: function() {
+            this.el.sceneEl.setAttribute('embedded', true);
+            this.el.sceneEl.setAttribute('arjs', {
+              detectionMode: 'mono'
+            });
+          }
+        });
+        
       AFRAME.registerComponent('play-on-marker', {
         init: function () {
           this.el.sceneEl.addEventListener('markerFound', () => {
