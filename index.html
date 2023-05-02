@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Web AR Example</title>
+    <meta charset="utf-8" />
+    <title>AR Video</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+        const videos = document.getElementsByTagName('a-video');
+        for (let i = 0; i < videos.length; i++) {
+          videos[i].components.material.material.map.image.pause();
+        }
+      });
+
+      AFRAME.registerComponent('arjs', {
+          init: function() {
+            this.el.sceneEl.setAttribute('embedded', true);
+            this.el.sceneEl.setAttribute('arjs', {
+              detectionMode: 'mono'
+            });
+          }
+        });
+
+      AFRAME.registerComponent('play-on-marker', {
+        init: function () {
+          this.el.sceneEl.addEventListener('markerFound', () => {
+            this.el.components.material.material.map.image.play();
+          });
+          this.el.sceneEl.addEventListener('markerLost', () => {
+            this.el.components.material.material.map.image.pause();
+          });
+        }
+      });
+    </script>
   </head>
   <body>
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
-      <a-nft
-        type='nft'
-        url='Test_img.png'
-        smooth='true'
-        smoothCount='10'
-        smoothTolerance='0.01'
-        smoothThreshold='5'
-      >
-        <a-video
-          src='Test.mp4'
-          width='16'
-          height='9'
-          position='0 0 0'
-        ></a-video>
-      </a-nft>
-      <a-entity camera></a-entity>
+    <a-scene arjs>
+      <a-marker id="marker" preset="hiro">
+        <a-video play-on-marker src="Test.mp4" width="2" height="1" position="0 0 0" look-at="#marker" rotation="-90 0 0" preload="none"></a-video>
+      </a-marker>
+      <a-entity camera look-controls-enabled></a-entity>
     </a-scene>
   </body>
 </html>
