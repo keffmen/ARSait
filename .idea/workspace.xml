@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="465340b4-a218-4021-a519-f64b12afa86f" name="Changes" comment="Новое фото" />
+    <list default="true" id="465340b4-a218-4021-a519-f64b12afa86f" name="Changes" comment="Новое фото v3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +61,23 @@
       <option name="project" value="LOCAL" />
       <updated>1694259259243</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Новое фото v2">
+      <option name="closed" value="true" />
+      <created>1694259604671</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694259604671</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Новое фото v3">
+      <option name="closed" value="true" />
+      <created>1694260022379</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694260022379</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,6 +93,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Новое фото" />
-    <option name="LAST_COMMIT_MESSAGE" value="Новое фото" />
+    <MESSAGE value="Новое фото v2" />
+    <MESSAGE value="Новое фото v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Новое фото v3" />
   </component>
 </project>
